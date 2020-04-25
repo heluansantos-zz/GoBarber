@@ -3,9 +3,15 @@ import { isEqual } from 'date-fns';
 
 class AppointmentRepository {
   private appointments: Appointment[];
+
   constructor() {
     this.appointments = [];
   }
+
+  public all(): Appointment[] {
+    return this.appointments;
+  }
+
   public findByDate(date: Date): Appointment | null {
     const findAppintment = this.appointments.find(appointment =>
       isEqual(date, appointment.date),
