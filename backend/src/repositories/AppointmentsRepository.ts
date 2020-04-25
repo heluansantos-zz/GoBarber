@@ -1,4 +1,4 @@
-import Appointment from '../models/Appointments';
+import Appointment from '../models/Appointment';
 import { isEqual } from 'date-fns';
 
 interface CreateAppointmentDTO {
@@ -6,7 +6,7 @@ interface CreateAppointmentDTO {
   date: Date;
 }
 
-class AppointmentRepository {
+class AppointmentsRepository {
   private appointments: Appointment[];
 
   constructor() {
@@ -32,4 +32,4 @@ class AppointmentRepository {
   }
 }
 
-export default AppointmentRepository;
+export default AppointmentsRepository;
