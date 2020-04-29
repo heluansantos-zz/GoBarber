@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import authConfig from '../config/auth';
+import AppError from '../errors/AppError';
 
 export default function ensureAuthenticated(
   request: Request,
@@ -17,7 +18,7 @@ export default function ensureAuthenticated(
   }
 
   if (!authHeader) {
-    throw new Error('JWT token is missint');
+    throw new AppError('JWT token is missint', 401);
   }
 
   const [, token] = authHeader.split(' ');
@@ -33,6 +34,6 @@ export default function ensureAuthenticated(
 
     return next();
   } catch (err) {
-    throw new Error('Invalid JWT token');
+    throw new AppError('Invalid JWT token', 401);
   }
 }
